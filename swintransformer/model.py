@@ -127,7 +127,7 @@ def drop_path(inputs, drop_prob, is_training):
 
     # Compute drop_connect tensor
     random_tensor = keep_prob
-    shape = (inputs.shape[0],) + (1,) * \
+    shape = (tf.shape(inputs)[0],) + (1,) * \
         (tf.experimental.numpy.ndim(inputs) - 1)
     random_tensor += tf.random.uniform(shape, dtype=inputs.dtype)
     binary_tensor = tf.floor(random_tensor)
